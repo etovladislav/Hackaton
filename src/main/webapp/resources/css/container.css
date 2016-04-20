@@ -1,0 +1,129 @@
+/*
+ГОВНОКОД*/
+body{
+    text-decoration: none;
+
+}
+#page-name{
+    padding-left: 15px;
+    padding-bottom: 30px;
+}
+
+.header {
+    height: 60px;
+    width: 100%;
+    background-color: #2f363e;
+    color: #d3d9e0;
+    margin-bottom: 5px;
+    text-align: center;
+    display: table;
+}
+
+.header p {
+    display: table-cell;
+    vertical-align: middle;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 18pt;
+}
+
+
+.script-elem-passive {
+    /* Цвет линии слева */
+    /* Стиль линии */
+    border-top: 3px solid #2f363e;
+    padding-left: 40px;
+    padding-top: 5px;
+    /*margin-top: 7px;*/
+    width: 100%;
+    background-color: #64707e;
+    text-align: left;
+    font-size: 16pt;
+    /*display: table;*/
+}
+
+.script-elem p {
+    /*display: table-cell;*/
+    vertical-align: middle;
+}
+
+.text {
+    display: table;
+    color: #d1d1d1;
+}
+
+
+
+.script-elem .text p {
+    display: table-cell;
+}
+
+.buttons {
+    position: absolute;
+    right: 20px;
+}
+
+.buttons .fa {
+    font-size: 24px;
+}
+
+.script-elem-active {
+    background-color: #2f363e;
+}
+
+.algorithm {
+    padding: 10px;
+    border-left-color: #2caf5f; /* Цвет линии слева */
+    border-left-style: solid; /* Стиль линии */
+    border-left-width: 15px; /* Толщина линии */
+    background-color: #eaeff5;
+}
+
+.buttons .fa i{
+    color:lightgray;!important;
+}
+
+.fa-pencil:hover{
+    color: #2caf5f;
+}
+
+.fa-close:hover{
+    color: #d66c2c;
+}
+
+.fa-square{
+    color: inherit;
+}
+
+.script-elem-passive:hover{
+    background-color: #2caf5f;
+    color: #fff;
+
+}
+
+.panel-heading{
+    border-radius: inherit;
+}
+.panel-heading:hover{
+    background-color: #64707e;
+    color: white;
+    border-radius: inherit;
+}
+.panel-body{
+    border-left: 3px solid #2caf5f;
+}
+
+.panel > .in .panel{
+    background-color: #2caf5f;
+}
+
+.in + .panel-heading {  /* первый правый сосед #latvian с селектором LI */
+    background-color: green;
+}
+
+.btn-add-helper{
+    font-size: 16px;
+    width: 100%;
+    background-color: #2caf5f;
+    color: #dff0d8;
+}

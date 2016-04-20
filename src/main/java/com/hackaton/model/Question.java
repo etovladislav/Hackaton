@@ -32,8 +32,6 @@ public class Question {
     @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
     List<Action> actionList;
 
-
-
     public Long getId() {
         return id;
     }
@@ -48,6 +46,14 @@ public class Question {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Url getUrl() {
