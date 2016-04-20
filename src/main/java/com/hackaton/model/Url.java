@@ -1,5 +1,6 @@
 package com.hackaton.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -19,7 +20,8 @@ public class Url {
     @Type(type = "org.hibernate.type.StringClobType")
     String url;
 
-    @OneToMany(mappedBy = "url", fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "url", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Question> questions;
 
 

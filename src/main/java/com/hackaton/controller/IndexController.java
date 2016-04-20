@@ -64,26 +64,6 @@ public class IndexController {
     @RequestMapping(value = "/saveQuestion", method = RequestMethod.POST, consumes = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public void saveQuestion(@RequestBody QuestionForm questionForm) {
-        Url url = urlRepository.findOneByUrl(questionForm.getUrl());
-        List<Question> questionList = url.getQuestions();
-        if (url == null) {
-            url = new Url();
-            url.setUrl(questionForm.getUrl());
-            questionList = new ArrayList<>();
-        }
-        Question question = new Question();
-        question.setUrl(url);
-        question.setText(questionForm.getText());
-        List<Action> actions = new ArrayList<>();
-        for (ActionDto actionDto : questionForm.getActionList()) {
-            Action action = new Action();
-            action.setText(actionDto.getText());
-            action.setSelector(actionDto.getSelector());
-            action.setType(actionDto.getType());
-            actions.add(action);
-        }
-        question.setActionList(actions);
-        questionList.add(question);
-        url.setQuestions(questionList);
+        urlService.saveUrl(questionForm);
     }
 }
