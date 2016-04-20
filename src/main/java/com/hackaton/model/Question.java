@@ -32,18 +32,8 @@ public class Question {
     @OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Action> actionList;
 
-<<<<<<< Updated upstream
-=======
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
->>>>>>> Stashed changes
     public Long getId() {
         return id;
     }
