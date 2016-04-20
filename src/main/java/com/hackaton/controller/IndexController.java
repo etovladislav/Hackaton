@@ -1,17 +1,24 @@
 package com.hackaton.controller;
 
+import com.hackaton.model.Action;
 import com.hackaton.model.Question;
+import com.hackaton.model.Url;
 import com.hackaton.repository.QuestionRepository;
 import com.hackaton.repository.UrlRepository;
 import com.hackaton.service.UrlService;
+import com.hackaton.util.ActionDto;
+import com.hackaton.util.QuestionForm;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,5 +59,31 @@ public class IndexController {
             questionList1.add(question);
         }
         return questionList1;
+    }
+
+    @RequestMapping(value = "/saveQuestion", method = RequestMethod.POST, consumes = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public void saveQuestion(@RequestBody QuestionForm questionForm) {
+        Url url = urlRepository.findOneByUrl(questionForm.getUrl());
+        List<Question> questionList = url.getQuestions();
+        if (url == null) {
+            url = new Url();
+            url.setUrl(questionForm.getUrl());
+            questionList = new ArrayList<>();
+        }
+        Question question = new Question();
+        question.setUrl(url);
+        question.setText(questionForm.getText());
+        List<Action> actions = new ArrayList<>();
+        for (ActionDto actionDto : questionForm.getActionList()) {
+            Action action = new Action();
+            action.setText(actionDto.getText());
+            action.setSelector(actionDto.getSelector());
+            action.setType(actionDto.getType());
+            actions.add(action);
+        }
+        question.setActionList(actions);
+        questionList.add(question);
+        url.setQuestions(questionList);
     }
 }
